@@ -39,14 +39,4 @@
 
 
 <style>
-.notification{
-	 display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-        bottom: 2rem;
-        right: 2rem;
-        z-index: 9999;
-        margin-bottom: 1.5rem;
-}	
 </style>

@@ -12,8 +12,8 @@
           </div>
           <div class="navbar-menu">
               <div class="navbar-start">
-                  <a class="navbar-item">Dashboard</a>
-                  <a class="navbar-item">Month</a>
+                  <a href="/home" class="navbar-item">Dashboard</a>
+                  <a href="/types/create" class="navbar-item">Categories</a>
                   <a class="navbar-item">Year</a>
               </div>
 

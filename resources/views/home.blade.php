@@ -2,14 +2,15 @@
 
 @section('content')
 
-<div id="home">
+<div id="home" class="container">
+
 
 	<div class="box">
 	<h1 class="title"> Recent incomings</h1>
-	<notification></notification>
 	</div>
-
-	<expenselist></expenselist>
+	<notification></notification>
+	<expence-create></expence-create>
+	<expense-list></expense-list>
 
 </div>
 @endsection
