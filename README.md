@@ -7,7 +7,7 @@ It is meant to register all of your monthly incomings and expenses, cataloging t
 
 [![Screen_Shot_2018-01-31_at_22.44.36.png](https://s5.postimg.org/jngui4w9j/Screen_Shot_2018-01-31_at_22.44.36.png)](https://postimg.org/image/fr3im5b9v/)
 
-[![Screen_Shot_2018-01-24_at_09.35.41_2.png](https://s5.postimg.org/tqnlqyt07/Screen_Shot_2018-01-24_at_09.35.41_2.png)](https://postimg.org/image/z22ibof2r/)
+[![Screen_Shot_2018-01-31_at_23.42.39.png](https://s5.postimg.org/iz7zymkiv/Screen_Shot_2018-01-31_at_23.42.39.png)](https://postimg.org/image/oamwjc6lf/)
 
 # Installation
 
@@ -32,7 +32,7 @@ After that, run the folowing comand <br>
 Then run the folowing comand
  *php artisan serve* 
  
- [![Screen_Shot_2018-01-24_at_09.45.54.png](https://s5.postimg.org/9ah6meniv/Screen_Shot_2018-01-24_at_09.45.54.png)](https://postimg.org/image/kmts46w7n/)
+ 
  
  And go yo the url given by the output of the command
  
