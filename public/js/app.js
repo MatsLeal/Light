@@ -30171,7 +30171,7 @@ var Form = function () {
 	}, {
 		key: 'reset',
 		value: function reset() {
-			for (var field in originalData) {
+			for (var field in this.originalData) {
 				this[field] = '';
 			}
 		}
@@ -31316,7 +31316,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -31327,6 +31327,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -31410,7 +31412,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        Event.$on('type-added', this.getTypes());
+        var _this2 = this;
+
+        Event.$on('type-added', function () {
+            return _this2.getTypes();
+        });
         this.getTypes();
     }
 });
@@ -31427,6 +31433,8 @@ var render = function() {
     _c("div", { staticClass: "tile is-ancestor" }, [
       _c("div", { staticClass: "tile " }, [
         _c("div", { staticClass: "box" }, [
+          _c("h2", { staticClass: "title" }, [_vm._v(" Incomings ")]),
+          _vm._v(" "),
           _c(
             "div",
             { staticClass: "field is-grouped is-grouped-multiline" },
@@ -31449,6 +31457,8 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "tile" }, [
         _c("div", { staticClass: "box" }, [
+          _c("h2", { staticClass: "title" }, [_vm._v(" Expenses ")]),
+          _vm._v(" "),
           _c(
             "div",
             { staticClass: "field is-grouped is-grouped-multiline" },
@@ -31593,15 +31603,17 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 199 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -31618,6 +31630,51 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			IncomeTypeForm: new Form({
+				description: '',
+				type: 1
+			}),
+
+			ExpenseTypeForm: new Form({
+				description: '',
+				type: 0
+			})
+		};
+	},
+
+	methods: {
+		submitExpenseType: function submitExpenseType() {
+			this.ExpenseTypeForm.post('/types', this.ExpenseTypeForm.data()).then(response);
+		},
+		submitType: function submitType(form) {
+			var _this = this;
+
+			form.post('/types', form.data).then(function (response) {
+				form.description = '';
+				_this.onSuccess(response);
+			}).catch(function (error) {
+				return _this.onFail(error);
+			});
+		},
+		onSuccess: function onSuccess(response) {
+			Event.$emit('type-added');
+			Event.$emit('notify-success', response.message);
+		},
+		onFail: function onFail(error) {
+			Event.$emit('notify-error', error.message);
+		}
+	}
+});
 
 /***/ }),
 /* 200 */
@@ -31627,28 +31684,145 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box" }, [
-      _c("div", { staticClass: "field is-horizontal" }, [
-        _c("div", { staticClass: "field-body" }, [
-          _c("div", { staticClass: "field" }, [
-            _c("input", { staticClass: "input", attrs: { type: "text" } })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("input", { staticClass: "input", attrs: { type: "text" } })
-          ])
+  return _c("div", { staticClass: "box" }, [
+    _c("div", { staticClass: "field is-horizontal" }, [
+      _c("div", { staticClass: "field-body" }, [
+        _c("div", { staticClass: "field" }, [
+          _c(
+            "form",
+            {
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.submitType(_vm.IncomeTypeForm)
+                },
+                submit: function($event) {
+                  $event.preventDefault()
+                },
+                keydown: function($event) {
+                  _vm.IncomeTypeForm.errors.clear($event.target.name)
+                }
+              }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.IncomeTypeForm.description,
+                    expression: "IncomeTypeForm.description"
+                  }
+                ],
+                staticClass: "input",
+                attrs: {
+                  type: "text",
+                  placeholder: "Type and hit enter to add an income categorie"
+                },
+                domProps: { value: _vm.IncomeTypeForm.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.IncomeTypeForm,
+                      "description",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.IncomeTypeForm.errors.has("description")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: {
+                      textContent: _vm._s(
+                        _vm.IncomeTypeForm.errors.get("description")
+                      )
+                    }
+                  })
+                : _vm._e()
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c(
+            "form",
+            {
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.submitType(_vm.ExpenseTypeForm)
+                },
+                submit: function($event) {
+                  $event.preventDefault()
+                },
+                keydown: function($event) {
+                  _vm.ExpenseTypeForm.errors.clear($event.target.name)
+                }
+              }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.ExpenseTypeForm.description,
+                    expression: "ExpenseTypeForm.description"
+                  }
+                ],
+                staticClass: "input",
+                attrs: {
+                  type: "text",
+                  placeholder: "Type and hit enter to add an expense  categorie"
+                },
+                domProps: { value: _vm.ExpenseTypeForm.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.ExpenseTypeForm,
+                      "description",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.ExpenseTypeForm.errors.has("description")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: {
+                      textContent: _vm._s(
+                        _vm.ExpenseTypeForm.errors.get("description")
+                      )
+                    }
+                  })
+                : _vm._e()
+            ]
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

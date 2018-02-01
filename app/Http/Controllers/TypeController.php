@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Type;
+use App\Http\Requests\StoreType;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
@@ -33,9 +34,12 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreType $request)
     {
-        //
+        $type = new Type;
+        $type->fill($request->all());
+        $type->save();
+        return ['message'=>'The categorie : '.$type->description. ' as registered successfully !'];
     }
 
     /**

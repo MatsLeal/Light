@@ -4,6 +4,7 @@
 <div class="tile is-ancestor">
   <div class="tile ">
     <div class="box">
+      <h2 class="title"> Incomings </h2>
             <div class="field is-grouped is-grouped-multiline">
                     <div class="control" v-for="type in incomingTypes " :key="type.id">
                         <div class="tags has-addons">
@@ -21,6 +22,7 @@
 
           <div class="tile">
             <div class="box">
+            <h2 class="title"> Expenses </h2>
             <div class="field is-grouped is-grouped-multiline">
                     <div class="control" v-for="type in expenseTypes " :key="type.id">
                         <div class="tags has-addons">
@@ -76,7 +78,7 @@
             }
       },
       mounted(){
-        Event.$on('type-added',this.getTypes());
+        Event.$on('type-added',()=>this.getTypes());
         this.getTypes();
       }
   }	
