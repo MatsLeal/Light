@@ -1,7 +1,7 @@
 <template>
 
 <div class="box">
-  Expense
+  Income
 <form  @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" >
 <div class="field is-horizontal">
   <div class="field-body">

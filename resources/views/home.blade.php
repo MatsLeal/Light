@@ -6,11 +6,13 @@
 
 
 	<div class="box">
-	<h1 class="title"> Recent expenses</h1>
+	<h1 class="title"> Recent budget operations</h1>
 	</div>
 	<notification></notification>
 	<expence-create></expence-create>
-	<expense-list></expense-list>
+	<income-create></income-create>
+	<!-- <expense-list></expense-list> -->
+	<transaction-list></transaction-list>
 
 </div>
 @endsection

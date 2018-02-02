@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/expenses','ExpenseController');
 
 Route::resource('/types','TypeController');
+
+Route::resource('/incomings','IncomingController');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Incoming;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class IncomingController extends Controller
      */
     public function index()
     {
-        //
+        return Auth::user()->incomings->toArray();
     }
 
     /**

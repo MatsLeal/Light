@@ -4,8 +4,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Incoming::class, function (Faker $faker) {
     return [
-	'amount' => $faker->integer,
-	'description' => $faker->text,
-	'user_id' => 0
+      'amount' => $faker->numberBetween(1,200),
+      'description' => $faker->sentence(5,true),
+      'user_id' => 0
     ];
 });

@@ -17,6 +17,12 @@ class UsersTableSeeder extends Seeder
     			->each( function ($expense) use ($user){
     				$user->expenses()->save($expense);
     			});
+
+    			factory(App\Incoming::class,20)->make()
+    			->each( function ($income) use ($user){
+    				$user->incomings()->save($income);
+    			});
+
     		});
     	;
     }
