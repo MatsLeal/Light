@@ -9,10 +9,7 @@
                     <div class="control" v-for="type in incomingTypes " :key="type.id">
                         <div class="tags has-addons">
                               <a class="tag is-info is-large">{{type.description}}</a>
-                              <a class="tag is-large is-delete"></a>
-                              <a class="tag is-large is-primary">
-                                  <i class="fa fa-edit"></i>
-                              </a>
+                              <a class="tag is-large is-delete" @click="destroy(type)"></a>
                         </div>
                     </div>
                 </div>
@@ -27,10 +24,8 @@
                     <div class="control" v-for="type in expenseTypes " :key="type.id">
                         <div class="tags has-addons">
                               <a class="tag is-danger is-large">{{type.description}}</a>
-                              <a class="tag is-large is-delete"></a>
-                              <a class="tag is-large is-primary">
-                                  <i class="fa fa-edit"></i>
-                              </a>
+                              <a class="tag is-large is-delete" @click="destroy(type)"></a>
+                             </a>
                         </div>
                     </div>
                 </div>
@@ -39,7 +34,7 @@
 
 </div>
 </div>
-</div>	
+</div>
 </template>
 
 
@@ -55,6 +50,16 @@
                 axios.get('/types')
                 .then(response => this.onSuccess(response))
                 .catch(error=> this.onFail(error))
+            },
+            destroy(type){
+                axios.delete('/types/'+type.id)
+                .then(response=>{
+                  this.types.splice(this.types.indexOf(type),1);
+                  Event.$emit('notify-success',response.data.message);
+                })
+                .catch(error=> {
+                  Event.$emit('notify-error','Could not delete type !');
+                })
             },
             onSuccess(response){
                   console.log(response.data);
@@ -81,10 +86,10 @@
         Event.$on('type-added',()=>this.getTypes());
         this.getTypes();
       }
-  }	
+  }
 
 </script>
 
 <style>
-	
+
 </style>

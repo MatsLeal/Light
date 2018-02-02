@@ -40,7 +40,8 @@ class ExpenseController extends Controller
         $expense = new Expense;
         $expense->fill($request->all());
         Auth::user()->expenses()->save($expense);
-        return ['message' => 'The expence was registered successfully !'];
+        return ['message' => 'The expence was registered successfully !',
+                  'expense' => $expense->toArray()];
     }
 
     /**

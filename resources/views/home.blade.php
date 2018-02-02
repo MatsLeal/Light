@@ -6,7 +6,7 @@
 
 
 	<div class="box">
-	<h1 class="title"> Recent incomings</h1>
+	<h1 class="title"> Recent expenses</h1>
 	</div>
 	<notification></notification>
 	<expence-create></expence-create>
