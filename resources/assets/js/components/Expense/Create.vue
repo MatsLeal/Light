@@ -23,6 +23,13 @@
       	<span class="help is-danger"  v-if="form.errors.has('description')" v-text="form.errors.get('description')"></span>
     </div>
 
+    <div class="select">
+      <select v-model="type_id">
+        <option v-for="type in types" :value="type.id"> {{ type.description}}</option>
+      </select>
+    </div>
+
+
       <p class="control">
     <button class="button is-primary" :disabled="form.errors.any()">
       +
@@ -43,8 +50,11 @@
 			return {
 				form : new Form({
 					amount : '',
-					description : ''
-				})
+					description : '',
+          type_id : 0 ,
+				}),
+        types : [],
+
 			}
 		},
 
@@ -64,7 +74,11 @@
 			onFail(error){
 				Event.$emit('notify-error',error.message);
 			}
-		}
+		},
+    created(){
+      axios.get('/types')
+      .then(response => this.types=response.data.filter((type)=>{return type.type==0;}))
+    }
 	}
 
 </script>

@@ -30856,7 +30856,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30905,6 +30905,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -30912,8 +30919,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			form: new Form({
 				amount: '',
-				description: ''
-			})
+				description: '',
+				type_id: 0
+			}),
+			types: []
+
 		};
 	},
 
@@ -30936,6 +30946,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		onFail: function onFail(error) {
 			Event.$emit('notify-error', error.message);
 		}
+	},
+	created: function created() {
+		var _this2 = this;
+
+		axios.get('/types').then(function (response) {
+			return _this2.types = response.data.filter(function (type) {
+				return type.type == 0;
+			});
+		});
 	}
 });
 
@@ -31045,6 +31064,42 @@ var render = function() {
                     }
                   })
                 : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.type_id,
+                      expression: "type_id"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.type_id = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.types, function(type) {
+                  return _c("option", { domProps: { value: type.id } }, [
+                    _vm._v(" " + _vm._s(type.description))
+                  ])
+                })
+              )
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "control" }, [
@@ -31926,7 +31981,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -31975,6 +32030,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -31983,7 +32045,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			form: new Form({
 				amount: '',
 				description: ''
-			})
+			}),
+			types: [],
+			typeid: 0
 		};
 	},
 
@@ -32006,6 +32070,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		onFail: function onFail(error) {
 			Event.$emit('notify-error', error.message);
 		}
+	},
+	created: function created() {
+		var _this2 = this;
+
+		axios.get('/types').then(function (response) {
+			return _this2.types = response.data.filter(function (type) {
+				return type.type == 1;
+			});
+		});
 	}
 });
 
@@ -32117,6 +32190,42 @@ var render = function() {
                 : _vm._e()
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.typeid,
+                      expression: "typeid"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.typeid = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.types, function(type) {
+                  return _c("option", { domProps: { value: type.id } }, [
+                    _vm._v(" " + _vm._s(type.description))
+                  ])
+                })
+              )
+            ]),
+            _vm._v(" "),
             _c("p", { staticClass: "control" }, [
               _c(
                 "button",
@@ -32124,7 +32233,7 @@ var render = function() {
                   staticClass: "button is-primary",
                   attrs: { disabled: _vm.form.errors.any() }
                 },
-                [_vm._v("\n      +\n    ")]
+                [_vm._v("\n        +\n      ")]
               )
             ])
           ])
