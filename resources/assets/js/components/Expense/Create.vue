@@ -24,7 +24,7 @@
     </div>
 
     <div class="select">
-      <select v-model="type_id">
+      <select v-model="form.type_id">
         <option v-for="type in types" :value="type.id"> {{ type.description}}</option>
       </select>
     </div>
@@ -46,14 +46,17 @@
 <script>
 
 	export default{
+    props : {
+        types : []
+    },
 		data(){
 			return {
 				form : new Form({
 					amount : '',
 					description : '',
           type_id : 0 ,
-				}),
-        types : [],
+          }),
+        // types : [],
 
 			}
 		},
@@ -76,8 +79,8 @@
 			}
 		},
     created(){
-      axios.get('/types')
-      .then(response => this.types=response.data.filter((type)=>{return type.type==0;}))
+      // axios.get('/types')
+      // .then(response => this.types=response.data.filter((type)=>{return type.type==0;}))
     }
 	}
 

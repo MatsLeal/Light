@@ -34,4 +34,8 @@ class User extends Authenticatable
     public function incomings(){
         return $this->hasMany('App\Incoming');
     }
+
+    public function types(){
+        return $this->hasMany('App\Type');
+    }
 }

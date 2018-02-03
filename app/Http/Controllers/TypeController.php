@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Type;
 use App\Http\Requests\StoreType;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return Type::all()->toArray();
+        return Auth::user()->types->toArray();
+        // return Type::all()->toArray();
     }
 
     /**
@@ -38,8 +40,9 @@ class TypeController extends Controller
     {
         $type = new Type;
         $type->fill($request->all());
+        $type->user_id=Auth::user()->id;
         $type->save();
-        return ['message'=>'The categorie : '.$type->description. ' as registered successfully !'];
+        return ['message'=>'The categorie : '.$type->description. ' was registered successfully !'];
     }
 
     /**

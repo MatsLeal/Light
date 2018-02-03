@@ -11,6 +11,12 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Type::class,20)->create();
+        $users=App\User::all();
+        foreach( $users as $user ){
+        factory(App\Type::class,20)->make()
+          ->each(function ($type) use ($user){
+              $user->types()->save($type);
+          });
+        }
     }
 }

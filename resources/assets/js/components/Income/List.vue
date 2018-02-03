@@ -30,7 +30,7 @@ export default {
             getIncomings(){
                 axios.get('/incomings')
                 .then( response => this.onSuccess(response))
-                // .catch( error => this.onFail(error))
+                .catch( error => this.onFail(error))
             },
             onSuccess(response){
                 this.incomings=response.data;
