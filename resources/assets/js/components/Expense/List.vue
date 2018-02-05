@@ -1,18 +1,23 @@
 <template>
-<table class="table is-fullwidth">
-		<thead>
-			<th>Amount</th>
-			<th>Description</th>
-			<th>Date</th>
-		</thead>
-		<tbody>
-			<tr v-for="expense in expenses" :key="expense.id">
-				<td>{{expense.amount}}</td>
-				<td>{{expense.description}}</td>
-				<td>{{expense.created_at}}</td>
-			</tr>
-		</tbody>
-	</table>	
+  <div class="box">
+    <div class="card" v-for="expense in expenses" style="padding-top : 20 px">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{expense.created_at}}
+      i spent {{expense.amount}}
+    </p>
+		   <a  class="card-header-icon" aria-label="more options">
+			<span class="tag is-danger" v-if="expense.type">{{expense.type}}</span>
+			</a>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {{expense.description}}
+    </div>
+  </div>
+</div>
+  </div>
+
 </template>
 
 
@@ -46,10 +51,10 @@ export default{
 		this.getExpenses();
 	}
 }
-	
+
 </script>
 
 <style>
-	
+
 
 </style>

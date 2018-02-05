@@ -47,7 +47,7 @@
 
 	export default{
     props : {
-      types : []
+      types : Array
     },
 		data(){
 			return {
@@ -55,20 +55,20 @@
 					amount : '',
 					description : '',
           type_id : 0
-				}),
+				})
 			}
 		},
 
 		methods: {
 			onSubmit(){
-				this.form.post('/expenses',this.form.data())
+				this.form.post('/incomings',this.form.data())
 				.then(response=> this.onSuccess(response) )
 				.catch(error => this.onFail(error))
 			},
 
 			onSuccess(response){
 				Event.$emit('notify-success',response.message);
-				Event.$emit('expense-added');
+				Event.$emit('income-added');
 			},
 
 			onFail(error){

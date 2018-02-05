@@ -2,6 +2,7 @@
 
 // namespace Tests\Feature;
 use App\User;
+use App\Type;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -16,11 +17,11 @@ class ExpensesTest extends TestCase
      */
     public function testExample()
     {
-    	$user = App\User::first();
-    	$expense=$user->expenses->first();
+    	$user = App\User::find(2);
+      $type= $user->types->first();
 
-        $this->actingAs($user)->get('/expenses')
-        	->assertSeeText($expense->description)
-        ;
+        $this->actingAs($user)->get('/home')
+        	->assertSee($type->description);
+
     }
 }

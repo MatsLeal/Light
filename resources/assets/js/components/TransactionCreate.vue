@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="box">
-    <expence-create :types="expenseType"></expence-create>
-    <income-create :types="incomeType"></income-create>
+    <expence-create :types="expenseType" ></expence-create>
+    <income-create :types="incomeType" ></income-create>
   </div>
 </template>
 
@@ -9,10 +9,17 @@
 
 import ExpenseCreate from './Expense/Create.vue';
 import IncomeCreate from './Income/Create.vue';
+
 export default {
+
   data(){
     return {
-      types : []
+      types : [],
+      form : new Form ({
+        amount : null,
+        description : null,
+        type_id : null
+      })
     }
   },
 
@@ -23,7 +30,6 @@ export default {
         .catch( error=> this.onFail(error))
       },
       onSuccess(response){
-          console.log(response.data);
           this.types=response.data;
       },
       onFail(error){

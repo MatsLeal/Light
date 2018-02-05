@@ -15,7 +15,17 @@ class IncomingController extends Controller
      */
     public function index()
     {
-        return Auth::user()->incomings->toArray();
+        // return Auth::user()->incomings->sortByDesc('created_at')->take(10)->toArray();
+
+        $incomings =Auth::user()->incomings->sortByDesc('created_at')->take(10);
+        foreach ($incomings as $incoming) {
+            if( count ($incoming->types) > 0)
+            {
+            $incoming->type=$incoming->types->first()->description;
+            }
+        }
+        return $incomings->toArray();
+
     }
 
     /**
@@ -36,7 +46,17 @@ class IncomingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $income = new Incoming;
+
+      $income->fill($request->all());
+
+      Auth::user()->incomings()->save($income);
+
+      $income->types()->attach($request->type_id);
+
+      return ['message' => 'The income was registered successfully !',
+                'expense' => $income->toArray()];
+
     }
 
     /**

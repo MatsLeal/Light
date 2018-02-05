@@ -4,9 +4,13 @@
   <header class="card-header">
     <p class="card-header-title">
       {{income.created_at}}
-      i spent {{income.amount}}
+      i recived {{income.amount}}
     </p>
+  <a  class="card-header-icon" aria-label="more options">
+ <span class="tag is-info" v-if="income.type">{{income.type}}</span>
+ </a>
   </header>
+
   <div class="card-content">
     <div class="content">
       {{income.description}}
@@ -46,6 +50,7 @@ export default {
       },
 
       created(){
+		      Event.$on('income-added',()=> this.getIncomings());
           this.getIncomings();
       }
 }

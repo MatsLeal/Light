@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Type;
 use App\Expense;
 use App\Http\Requests\StoreExpense;
 use Illuminate\Http\Request;
@@ -16,7 +17,14 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        return Auth::user()->expenses->sortByDesc('created_at')->take(10)->toArray();
+        $expenses =Auth::user()->expenses->sortByDesc('created_at')->take(10);
+        foreach ($expenses as $expense) {
+            if( count ($expense->types) > 0)
+            {
+            $expense->type=$expense->types->first()->description;
+            }
+        }
+        return $expenses->toArray();
     }
 
     /**
@@ -38,10 +46,16 @@ class ExpenseController extends Controller
     public function store(StoreExpense $request)
     {
         $expense = new Expense;
+
         $expense->fill($request->all());
+
         Auth::user()->expenses()->save($expense);
+
+        $expense->types()->attach($request->type_id);
+
         return ['message' => 'The expence was registered successfully !',
                   'expense' => $expense->toArray()];
+
     }
 
     /**

@@ -47,7 +47,7 @@
 
 	export default{
     props : {
-        types : []
+        types : Array
     },
 		data(){
 			return {
@@ -55,8 +55,7 @@
 					amount : '',
 					description : '',
           type_id : 0 ,
-          }),
-        // types : [],
+          })
 
 			}
 		},
@@ -69,7 +68,6 @@
 			},
 
 			onSuccess(response){
-				console.log(response);
 				Event.$emit('notify-success',response.message);
 				Event.$emit('expense-added');
 			},
