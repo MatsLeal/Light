@@ -9,6 +9,8 @@ It is meant to register all of your monthly incomings and expenses, cataloging t
 
 [![Screen_Shot_2018-01-31_at_23.42.39.png](https://s5.postimg.org/iz7zymkiv/Screen_Shot_2018-01-31_at_23.42.39.png)](https://postimg.org/image/oamwjc6lf/)
 
+[![Screen_Shot_2018-02-16_at_08.33.11_2.png](https://s5.postimg.org/84rinbz13/Screen_Shot_2018-02-16_at_08.33.11_2.png)](https://postimg.org/image/hcjr41637/)
+
 # Installation
 
 ## Database
