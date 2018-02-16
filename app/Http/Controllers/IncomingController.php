@@ -15,8 +15,6 @@ class IncomingController extends Controller
      */
     public function index()
     {
-        // return Auth::user()->incomings->sortByDesc('created_at')->take(10)->toArray();
-
         $incomings =Auth::user()->incomings->sortByDesc('created_at')->take(10);
         foreach ($incomings as $incoming) {
             if( count ($incoming->types) > 0)
@@ -24,7 +22,11 @@ class IncomingController extends Controller
             $incoming->type=$incoming->types->first()->description;
             }
         }
-        return $incomings->toArray();
+        $incomingarray=array();
+        foreach ($incomings as $income) {
+            array_push($incomingarray,$income);
+        }
+        return $incomingarray;
 
     }
 

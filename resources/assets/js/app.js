@@ -11,6 +11,7 @@ import TypeList from './components/Type/List.vue';
 import TypeCreate from './components/Type/Create.vue';
 import TransactionList from './components/TransactionList.vue';
 import TransactionCreate from './components/TransactionCreate.vue';
+import Month from './components/Dashboard/Month.vue';
 window.axios= axios;
 window.Form= Form;
 
@@ -30,5 +31,12 @@ var types = new Vue({
 		'type-list' : TypeList,
 		'type-create' : TypeCreate,
 		'notification' : Notification
+	}
+});
+
+var dashboard = new Vue({
+	el : '#dashboard',
+	components : {
+		'month' : Month
 	}
 });

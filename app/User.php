@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -38,4 +39,5 @@ class User extends Authenticatable
     public function types(){
         return $this->hasMany('App\Type');
     }
+
 }

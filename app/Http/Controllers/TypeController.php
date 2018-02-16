@@ -17,7 +17,6 @@ class TypeController extends Controller
     public function index()
     {
         return Auth::user()->types->toArray();
-        // return Type::all()->toArray();
     }
 
     /**

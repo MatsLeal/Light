@@ -24,3 +24,7 @@ Route::resource('/expenses','ExpenseController');
 Route::resource('/types','TypeController');
 
 Route::resource('/incomings','IncomingController');
+
+Route::get('/dashboard', 'DashBoardController@index');
+
+Route::get('/monthexpenses/{monthnumber}','ExpenseController@monthexpenses');

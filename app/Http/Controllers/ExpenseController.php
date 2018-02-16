@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Type;
 use App\Expense;
-use App\Http\Requests\StoreExpense;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreExpense;
 
 class ExpenseController extends Controller
 {
@@ -24,7 +25,11 @@ class ExpenseController extends Controller
             $expense->type=$expense->types->first()->description;
             }
         }
-        return $expenses->toArray();
+        $expensearray= array();
+        foreach ($expenses as $expense) {
+            array_push($expensearray,$expense);
+        }
+        return $expensearray;
     }
 
     /**
@@ -102,4 +107,30 @@ class ExpenseController extends Controller
     {
         //
     }
+
+
+    public function monthexpenses($month){
+
+        $expenses=Expense::getUserMonthExpenses($month);
+
+        $expenses= Expense::setWeekOfMonth($expenses);
+
+        $expenses= Expense::setWeekDays($expenses);
+                foreach ($expenses as $expense) {
+            if( count ($expense->types) > 0)
+            {
+            $expense->type=$expense->types->first()->description;
+            }
+        }
+
+
+        $expensesArray= array();
+        foreach ($expenses as $expense){
+            array_push($expensesArray,$expense);
+        }
+
+        return $expensesArray;
+
+        }
+
 }
