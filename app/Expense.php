@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Expense extends Model
 {
     public $fillable=['amount','description'];
-     public $hidden=[ 'types', 'id','user_id'];
+     public $hidden=[ 'types','user_id'];
 
     public function types(){
       return $this->belongsToMany('App\Type');

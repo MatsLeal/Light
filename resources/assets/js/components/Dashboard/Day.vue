@@ -6,20 +6,9 @@
 		          <p class="subtitle"> {{ name }}  </p>
 
 		          <div v-for="expense in expenses" class="field is-grouped is-grouped-multiline">
-
-			  <div class="control" >
-				    <div class="tags has-addons">
-				      <span class="tag is-danger" >
-				      	{{ expense.type}}
-				      </span>
-				      <span class="tag is-dark" style="text-decoration: none">
-				      	${{ expense.amount }}
-				      </span>
-				      <span class="tag is-delete"></span>
-				    </div>
+				<expense-tag :data="expense"></expense-tag>
 			  </div>
 
-			</div>
 		        </article>
 		</div>
 	</div>	
@@ -28,7 +17,12 @@
 
 <script>
 
+import ExpenseTag from '../Expense/ExpenseTag.vue';
+
 export default {
+	components : {
+		'expense-tag' : ExpenseTag
+	},
 
 	props: {
 		name : String,

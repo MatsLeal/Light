@@ -1,61 +1,47 @@
 <template>
 	<div class="box">
-	    <div class="card" v-for="expense in expenses" style="padding-top : 20 px" :key="expense.id">
-		  	<header class="card-header">
-			   	 <p class="card-header-title">
-				      {{expense.created_at}}
-				      i spent {{expense.amount}}
-			    	</p>
-
-				<a  class="card-header-icon" aria-label="more options">
-					<span class="tag is-danger" v-if="expense.type">
-						{{expense.type}}
-					</span>
-				</a>
-
-		  	</header>
-
-			  <div class="card-content">
-			    <div class="content">
-			      {{expense.description}}
-			    </div>
-			  </div>
-		</div>
-  	</div>
-
+		<expense-card 
+		v-for="item in items" 
+		:data="item" 
+		:key="item.id" 
+		@deleted="destroy(item)"></expense-card>
+	</div>
 </template>
 
 
 <script>
-
-
 import moment from 'moment';
+import ExpenseCard from './ExpenseCard.vue';
+import Collection from '../../libary/Collection.vue';
 export default{
+	name : 'ExpenseList',
+	extends :  Collection,
+
+	components : {
+		'expense-card' : ExpenseCard 
+	},
 
 	data(){
 		return {
-			expenses : []
+			items : {},
+			endPoint : '/expenses/',
+			notifies: true,
+			itemName : 'Expense'
 		}
 	},
 
 	methods:{
-		getExpenses(){
-			axios.get('/expenses')
-			.then(response=> this.onSuccess(response))
-			.catch(error=> {
-				Event.$emit('notify-error','Could not fetch your latest expenses !')
-			})
-		},
 		onSuccess(response){
-			this.expenses=response.data;
-			for (let e in this.expenses){
-				this.expenses[e].created_at = moment(this.expenses[e].created_at).format('ll');
+			this.items=response.data;
+			for (let e in this.items){
+				this.items[e].created_at = moment(this.items[e].created_at).format('ll');
 			}
-		}
+		},
+		
 	},
 	created(){
-		Event.$on('expense-added',()=> this.getExpenses());
-		this.getExpenses();
+		Event.$on('expense-added',()=> this.getItems());
+		this.getItems();
 	},
 }
 

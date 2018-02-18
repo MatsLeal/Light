@@ -1,28 +1,16 @@
 <template lang="html">
   <div class="box">
-    <div class="card" v-for="income in incomings" style="padding-top : 20 px">
-  <header class="card-header">
-    <p class="card-header-title">
-      {{income.created_at}}
-      i recived {{income.amount}}
-    </p>
-  <a  class="card-header-icon" aria-label="more options">
- <span class="tag is-info" v-if="income.type">{{income.type}}</span>
- </a>
-  </header>
-
-  <div class="card-content">
-    <div class="content">
-      {{income.description}}
-    </div>
-  </div>
-</div>
+    <income-card v-for="income in incomings" :data="income" :key="income.id" @deleted="onIncomeDeleted(income)"></income-card>
   </div>
 </template>
 
 <script>
   import moment from 'moment';
+  import IncomeCard from './IncomeCard.vue';
 export default {
+  components : {
+     'income-card' : IncomeCard
+  },
 
       data(){
         return {
@@ -44,8 +32,10 @@ export default {
 
             },
             onFail(error){
-                console.log(error);
                 Event.$emit('notify-error','Could not fetch incomings !')
+            },
+            onIncomeDeleted(income){
+              this.incomings.splice(this.incomings.indexOf(income),1);
             }
       },
 

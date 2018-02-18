@@ -6,7 +6,7 @@
 	<day name="Thursday" :expenses="setDayExpenses(4)"></day>
 	<day name="Friday" :expenses="setDayExpenses(5)"></day>
 	<day name="Saturday" :expenses="setDayExpenses(6)"></day>
-	<day name="Sunday" :expenses="setDayExpenses(7)"></day>
+	<day name="Sunday" :expenses="setDayExpenses(0)"></day>
 </div>	
 </template>
 

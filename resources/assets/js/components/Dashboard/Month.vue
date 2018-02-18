@@ -1,5 +1,8 @@
 <template>
 	
+<div>
+	<notification></notification>
+
 <div class="tile is-ancestor">
 	<week :expenses="setWeekExpenses(1)"></week>	
 	<week :expenses="setWeekExpenses(2)"></week>	
@@ -7,18 +10,20 @@
 	<week :expenses="setWeekExpenses(4)"></week>	
 	<week :expenses="setWeekExpenses(5)"></week>	
 </div>
-
+</div>
 </template>
 
 
 <script>
 import Week from './Week.vue';
+import Notification from '../Notification.vue'
 var date = new Date();
 var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
 var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 export default {
 	components : {
-		'week' : Week
+		'week' : Week,
+		'notification' : Notification
 	},
 
 	data(){
@@ -56,6 +61,8 @@ export default {
 
 	created(){
 		this.getMonthExpenses();
+		console.log(firstDay);
+		console.log(lastDay);
 	}
 }
 	

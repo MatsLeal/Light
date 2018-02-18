@@ -103,6 +103,7 @@ class IncomingController extends Controller
      */
     public function destroy(Incoming $incoming)
     {
-        //
+        $incoming->delete();
+        return ['message' => 'The income was deleted !'];
     }
 }
