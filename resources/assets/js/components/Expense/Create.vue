@@ -61,7 +61,7 @@ export default {
       form: new Form({
         amount: '',
         description: '',
-        type_id: 0
+        type_id: null
       })
 
     }
@@ -76,6 +76,7 @@ export default {
 
     onSuccess(response) {
       Event.$emit('notify-success', response.message)
+      this.form.reset();
       Event.$emit('expense-added')
     },
 

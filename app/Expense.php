@@ -24,14 +24,6 @@ class Expense extends Model
         });
     }
 
-    public static function setWeekOfMonth($expenses){
-
-        foreach ($expenses as $expense){
-            $expense->weekOfMonth= Carbon::parse($expense->created_at)->weekOfMonth;
-        }
-
-        return $expenses;
-    }
 
 
     public static function setWeekDays($expenses){

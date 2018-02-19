@@ -114,10 +114,9 @@ class ExpenseController extends Controller
 
         $expenses=Expense::getUserMonthExpenses($month);
 
-        $expenses= Expense::setWeekOfMonth($expenses);
-
         $expenses= Expense::setWeekDays($expenses);
-                foreach ($expenses as $expense) {
+
+        foreach ($expenses as $expense) {
             if( count ($expense->types) > 0)
             {
             $expense->type=$expense->types->first()->description;

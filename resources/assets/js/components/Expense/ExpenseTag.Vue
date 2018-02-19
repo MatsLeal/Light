@@ -7,7 +7,7 @@
 				      <span class="tag is-dark" style="text-decoration: none">
 				      	${{ data.amount }}
 				      </span>
-				      <span class="tag is-delete" @click="destroy(data)"></span>
+				      <!-- <span class="tag is-delete" @click="destroy(data)"></span> -->
 				    </div>
 			  </div>	
 </template>
