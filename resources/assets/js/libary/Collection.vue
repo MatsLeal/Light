@@ -15,7 +15,8 @@ export default {
     	notifies : false,
     	errorMessage : 'There was an error with your resquest',
     	successMessage : 'Request completed  !',
-    	itemName : "item"
+    	itemName : "item",
+      endPoint : null
     }
   },
     methods : {
@@ -32,7 +33,7 @@ export default {
   	},
 
   	onSuccess(response){
-            		this.item=response.data;
+            		this.items=response.data;
             		if(this.notifies){
             			 this.notifySuccess(this.successMessage);
             		}
