@@ -1,47 +1,39 @@
 <template lang="html">
   <div class="box">
-    <income-card v-for="income in incomings" :data="income" :key="income.id" @deleted="onIncomeDeleted(income)"></income-card>
+    <income-card v-for="item in items" :data="item" :key="item.id" @deleted="destroy(item)"></income-card>
   </div>
 </template>
 
 <script>
   import moment from 'moment';
   import IncomeCard from './IncomeCard.vue';
+  import Collection from '../../libary/Collection.vue';
 export default {
+  extends : Collection ,
   components : {
      'income-card' : IncomeCard
   },
 
       data(){
         return {
-            incomings : []
+            items : [],
+            notifies : true,
+            endPoint : '/incomings/',
+            itemName : 'Incoming'
         }
       },
 
       methods : {
-            getIncomings(){
-                axios.get('/incomings')
-                .then( response => this.onSuccess(response))
-                .catch( error => this.onFail(error))
-            },
             onSuccess(response){
-                this.incomings=response.data;
-                for (let e in this.incomings){
-                  this.incomings[e].created_at = moment(this.incomings[e].created_at).format('ll');
+                this.items=response.data;
+                for (let e in this.items){
+                  this.items[e].created_at = moment(this.items[e].created_at).format('ll');
                 }
-
-            },
-            onFail(error){
-                Event.$emit('notify-error','Could not fetch incomings !')
-            },
-            onIncomeDeleted(income){
-              this.incomings.splice(this.incomings.indexOf(income),1);
             }
       },
 
       created(){
-		      Event.$on('income-added',()=> this.getIncomings());
-          this.getIncomings();
+		      Event.$on('income-added',()=> this.getItems());
       }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="tile" style=" padding-right: 50px ; padding-bottom: 20px">
+		<div class="tile" style="  padding-bottom: 20px">
 			<article class="tile is-child notification ">
 
 		          <p class="subtitle"> 

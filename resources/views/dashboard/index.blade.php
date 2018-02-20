@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div  id="dashboard" class="container">
+<div  id="dashboard" class="">
 	<month></month>
 </div>
 

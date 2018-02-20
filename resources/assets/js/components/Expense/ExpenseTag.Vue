@@ -1,5 +1,5 @@
 <template>
-			  <div class="control" draggable="true">
+			  <div class="control" draggable="true" :title="data.description">
 				    <div class="tags has-addons">
 				      <span class="tag is-danger" >
 				      	{{ data.type}}

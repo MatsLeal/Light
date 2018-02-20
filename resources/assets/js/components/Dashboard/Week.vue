@@ -1,5 +1,10 @@
 <template>
-<div>
+
+<div style="padding-left: 30px ; padding-right: 30px">
+<div class="message-header">	
+	Expenses : {{ totalExpenses }}
+</div>
+<div class="message-body">
 	<day :number="0" name="Sunday" 
 			:expenses="setDayExpenses(0)"    
 			v-if="isStartOfMonth(0)"
@@ -43,6 +48,7 @@
 			
 	</day>
 </div>	
+</div>
 </template>
 
 
@@ -75,7 +81,17 @@ export default {
 		},
 		setDay(dayNumber){
 			return this.days.filter((day)=>{return day.weekDay==dayNumber})[0];
+		},
+	},
+	computed : {
+		totalExpenses(){
+			var total =0;
+			this.expenses.forEach((expense)=>{
+				total+=expense.amount;
+			});
+			return total;
 		}
+
 	}
 }
 	

@@ -1,5 +1,5 @@
 <template>
-		    <div class="card" style="padding-top : 20 px" :key="data.id">
+		    <div class="card" :key="data.id">
 		  	<header class="card-header">
 			   	 <p class="card-header-title">
 				      {{data.created_at}}

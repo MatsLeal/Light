@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import TransactionCard from '../Transaction/TransactionCard.vue';
+import Item from '../../libary/Item.vue';
 export default {
 
-  extends : TransactionCard,
+  extends : Item,
 
   name: 'IncomeCard',
 

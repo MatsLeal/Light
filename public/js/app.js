@@ -31888,7 +31888,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -31919,6 +31919,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.delete(this.endPoint + data.id).then(function (response) {
         return _this.$emit('deleted');
+      });
+    },
+    patch: function patch(data) {
+      var _this2 = this;
+
+      axios.patch(this.endPoint + data.id, data).then(function (response) {
+        return _this2.$emit('updated');
       });
     }
   }
@@ -31952,60 +31959,52 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      key: _vm.data.id,
-      staticClass: "card",
-      staticStyle: { "padding-top": "20 px" }
-    },
-    [
-      _c("header", { staticClass: "card-header" }, [
-        _c("p", { staticClass: "card-header-title" }, [
-          _vm._v(
-            "\n\t\t      " +
-              _vm._s(_vm.data.created_at) +
-              "\n\t\t      i spent " +
-              _vm._s(_vm.data.amount) +
-              "\n\t    \t"
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "card-header-icon",
-            attrs: { "aria-label": "more options" }
-          },
-          [
-            _vm.data.type
-              ? _c("span", { staticClass: "tag is-danger" }, [
-                  _vm._v("\n\t\t\t\t" + _vm._s(_vm.data.type) + "\n\t\t\t")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("span", {
-              staticClass: "tag is-delete",
-              on: {
-                click: function($event) {
-                  _vm.destroy(_vm.data)
-                },
-                deleted: function($event) {
-                  this.$emit("deleted")
-                }
-              }
-            })
-          ]
+  return _c("div", { key: _vm.data.id, staticClass: "card" }, [
+    _c("header", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-header-title" }, [
+        _vm._v(
+          "\n\t\t      " +
+            _vm._s(_vm.data.created_at) +
+            "\n\t\t      i spent " +
+            _vm._s(_vm.data.amount) +
+            "\n\t    \t"
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-content" }, [
-        _c("div", { staticClass: "content" }, [
-          _vm._v("\n\t      " + _vm._s(_vm.data.description) + "\n\t    ")
-        ])
+      _c(
+        "a",
+        {
+          staticClass: "card-header-icon",
+          attrs: { "aria-label": "more options" }
+        },
+        [
+          _vm.data.type
+            ? _c("span", { staticClass: "tag is-danger" }, [
+                _vm._v("\n\t\t\t\t" + _vm._s(_vm.data.type) + "\n\t\t\t")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("span", {
+            staticClass: "tag is-delete",
+            on: {
+              click: function($event) {
+                _vm.destroy(_vm.data)
+              },
+              deleted: function($event) {
+                this.$emit("deleted")
+              }
+            }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-content" }, [
+      _c("div", { staticClass: "content" }, [
+        _vm._v("\n\t      " + _vm._s(_vm.data.description) + "\n\t    ")
       ])
-    ]
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -32410,7 +32409,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32425,58 +32424,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__IncomeCard_vue__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__IncomeCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__IncomeCard_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libary_Collection_vue__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libary_Collection_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__libary_Collection_vue__);
 //
 //
 //
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    extends: __WEBPACK_IMPORTED_MODULE_2__libary_Collection_vue___default.a,
     components: {
         'income-card': __WEBPACK_IMPORTED_MODULE_1__IncomeCard_vue___default.a
     },
 
     data: function data() {
         return {
-            incomings: []
+            items: [],
+            notifies: true,
+            endPoint: '/incomings/',
+            itemName: 'Incoming'
         };
     },
 
 
     methods: {
-        getIncomings: function getIncomings() {
-            var _this = this;
-
-            axios.get('/incomings').then(function (response) {
-                return _this.onSuccess(response);
-            }).catch(function (error) {
-                return _this.onFail(error);
-            });
-        },
         onSuccess: function onSuccess(response) {
-            this.incomings = response.data;
-            for (var e in this.incomings) {
-                this.incomings[e].created_at = __WEBPACK_IMPORTED_MODULE_0_moment___default()(this.incomings[e].created_at).format('ll');
+            this.items = response.data;
+            for (var e in this.items) {
+                this.items[e].created_at = __WEBPACK_IMPORTED_MODULE_0_moment___default()(this.items[e].created_at).format('ll');
             }
-        },
-        onFail: function onFail(error) {
-            Event.$emit('notify-error', 'Could not fetch incomings !');
-        },
-        onIncomeDeleted: function onIncomeDeleted(income) {
-            this.incomings.splice(this.incomings.indexOf(income), 1);
         }
     },
 
     created: function created() {
-        var _this2 = this;
+        var _this = this;
 
         Event.$on('income-added', function () {
-            return _this2.getIncomings();
+            return _this.getItems();
         });
-        this.getIncomings();
     }
 });
 
@@ -32577,8 +32567,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Transaction_TransactionCard_vue__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Transaction_TransactionCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Transaction_TransactionCard_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libary_Item_vue__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libary_Item_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__libary_Item_vue__);
 //
 //
 //
@@ -32605,7 +32595,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-  extends: __WEBPACK_IMPORTED_MODULE_0__Transaction_TransactionCard_vue___default.a,
+  extends: __WEBPACK_IMPORTED_MODULE_0__libary_Item_vue___default.a,
 
   name: 'IncomeCard',
 
@@ -32624,146 +32614,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 224 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(225)
-}
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(227)
-/* template */
-var __vue_template__ = __webpack_require__(228)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-f3fbce54"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Transaction/TransactionCard.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f3fbce54", Component.options)
-  } else {
-    hotAPI.reload("data-v-f3fbce54", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 225 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(226);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("446799ec", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f3fbce54\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TransactionCard.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f3fbce54\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TransactionCard.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 226 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 227 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libary_Collection_vue__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libary_Collection_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__libary_Collection_vue__);
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-  name: 'TransactionCard',
-
-  extends: __WEBPACK_IMPORTED_MODULE_0__libary_Collection_vue___default.a,
-
-  data: function data() {
-    return {
-      items: {}
-    };
-  },
-  created: function created() {
-    this.getItems();
-  }
-});
-
-/***/ }),
-/* 228 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f3fbce54", module.exports)
-  }
-}
-
-/***/ }),
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
 /* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32843,13 +32698,13 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "box" },
-    _vm._l(_vm.incomings, function(income) {
+    _vm._l(_vm.items, function(item) {
       return _c("income-card", {
-        key: income.id,
-        attrs: { data: income },
+        key: item.id,
+        attrs: { data: item },
         on: {
           deleted: function($event) {
-            _vm.onIncomeDeleted(income)
+            _vm.destroy(item)
           }
         }
       })
@@ -34090,7 +33945,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34103,6 +33958,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Day_vue__ = __webpack_require__(255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Day_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Day_vue__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -34182,6 +34043,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return this.days.filter(function (day) {
 				return day.weekDay == dayNumber;
 			})[0];
+		}
+	},
+	computed: {
+		totalExpenses: function totalExpenses() {
+			var total = 0;
+			this.expenses.forEach(function (expense) {
+				total += expense.amount;
+			});
+			return total;
 		}
 	}
 });
@@ -34469,22 +34339,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "control", attrs: { draggable: "true" } }, [
-    _c("div", { staticClass: "tags has-addons" }, [
-      _c("span", { staticClass: "tag is-danger" }, [
-        _vm._v("\n\t      \t" + _vm._s(_vm.data.type) + "\n\t      ")
-      ]),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          staticClass: "tag is-dark",
-          staticStyle: { "text-decoration": "none" }
-        },
-        [_vm._v("\n\t      \t$" + _vm._s(_vm.data.amount) + "\n\t      ")]
-      )
-    ])
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "control",
+      attrs: { draggable: "true", title: _vm.data.description }
+    },
+    [
+      _c("div", { staticClass: "tags has-addons" }, [
+        _c("span", { staticClass: "tag is-danger" }, [
+          _vm._v("\n\t      \t" + _vm._s(_vm.data.type) + "\n\t      ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "tag is-dark",
+            staticStyle: { "text-decoration": "none" }
+          },
+          [_vm._v("\n\t      \t$" + _vm._s(_vm.data.amount) + "\n\t      ")]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -34507,10 +34384,7 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
-      {
-        staticClass: "tile",
-        staticStyle: { "padding-right": "50px", "padding-bottom": "20px" }
-      },
+      { staticClass: "tile", staticStyle: { "padding-bottom": "20px" } },
       [
         _c(
           "article",
@@ -34570,85 +34444,96 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { "padding-left": "30px", "padding-right": "30px" } },
     [
-      _vm.isStartOfMonth(0)
-        ? _c("day", {
-            attrs: {
-              number: 0,
-              name: "Sunday",
-              expenses: _vm.setDayExpenses(0),
-              day: _vm.setDay(0)
-            }
-          })
-        : _vm._e(),
+      _c("div", { staticClass: "message-header" }, [
+        _vm._v("\t\n\tExpenses : " + _vm._s(_vm.totalExpenses) + "\n")
+      ]),
       _vm._v(" "),
-      _vm.isStartOfMonth(1)
-        ? _c("day", {
-            attrs: {
-              number: 1,
-              name: "Monday",
-              expenses: _vm.setDayExpenses(1),
-              day: _vm.setDay(1)
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isStartOfMonth(2)
-        ? _c("day", {
-            attrs: {
-              number: 2,
-              name: "Tuesday",
-              expenses: _vm.setDayExpenses(2),
-              day: _vm.setDay(2)
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isStartOfMonth(3)
-        ? _c("day", {
-            attrs: {
-              number: 3,
-              name: "Wednesday",
-              expenses: _vm.setDayExpenses(3),
-              day: _vm.setDay(3)
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isStartOfMonth(4)
-        ? _c("day", {
-            attrs: {
-              number: 4,
-              name: "Thursday",
-              expenses: _vm.setDayExpenses(4),
-              day: _vm.setDay(4)
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isStartOfMonth(5)
-        ? _c("day", {
-            attrs: {
-              number: 5,
-              name: "Friday",
-              expenses: _vm.setDayExpenses(5),
-              day: _vm.setDay(5)
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isStartOfMonth(6)
-        ? _c("day", {
-            attrs: {
-              number: 6,
-              name: "Saturday",
-              expenses: _vm.setDayExpenses(6),
-              day: _vm.setDay(6)
-            }
-          })
-        : _vm._e()
-    ],
-    1
+      _c(
+        "div",
+        { staticClass: "message-body" },
+        [
+          _vm.isStartOfMonth(0)
+            ? _c("day", {
+                attrs: {
+                  number: 0,
+                  name: "Sunday",
+                  expenses: _vm.setDayExpenses(0),
+                  day: _vm.setDay(0)
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isStartOfMonth(1)
+            ? _c("day", {
+                attrs: {
+                  number: 1,
+                  name: "Monday",
+                  expenses: _vm.setDayExpenses(1),
+                  day: _vm.setDay(1)
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isStartOfMonth(2)
+            ? _c("day", {
+                attrs: {
+                  number: 2,
+                  name: "Tuesday",
+                  expenses: _vm.setDayExpenses(2),
+                  day: _vm.setDay(2)
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isStartOfMonth(3)
+            ? _c("day", {
+                attrs: {
+                  number: 3,
+                  name: "Wednesday",
+                  expenses: _vm.setDayExpenses(3),
+                  day: _vm.setDay(3)
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isStartOfMonth(4)
+            ? _c("day", {
+                attrs: {
+                  number: 4,
+                  name: "Thursday",
+                  expenses: _vm.setDayExpenses(4),
+                  day: _vm.setDay(4)
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isStartOfMonth(5)
+            ? _c("day", {
+                attrs: {
+                  number: 5,
+                  name: "Friday",
+                  expenses: _vm.setDayExpenses(5),
+                  day: _vm.setDay(5)
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isStartOfMonth(6)
+            ? _c("day", {
+                attrs: {
+                  number: 6,
+                  name: "Saturday",
+                  expenses: _vm.setDayExpenses(6),
+                  day: _vm.setDay(6)
+                }
+              })
+            : _vm._e()
+        ],
+        1
+      )
+    ]
   )
 }
 var staticRenderFns = []
