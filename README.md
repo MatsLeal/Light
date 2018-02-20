@@ -6,10 +6,9 @@ Hello, my name is Mats, i am a developer, this is a poject to prove some of my s
 It is meant to register all of your monthly incomings and expenses, cataloging them acordingly to your preferences and personal categories, in order to provide with statistics of economy based on your incomings and expenses.
 
 [![Screen_Shot_2018-01-31_at_22.44.36.png](https://s5.postimg.org/jngui4w9j/Screen_Shot_2018-01-31_at_22.44.36.png)](https://postimg.org/image/fr3im5b9v/)
+[![Screen_Shot_2018-02-20_at_13.44.34_2.png](https://s5.postimg.org/qw40b5kmf/Screen_Shot_2018-02-20_at_13.44.34_2.png)](https://postimg.org/image/6oqkiun4z/)
+[![Screen_Shot_2018-02-20_at_13.44.43_2.png](https://s5.postimg.org/rlmsnisvr/Screen_Shot_2018-02-20_at_13.44.43_2.png)](https://postimg.org/image/ehh8au0tv/)
 
-[![Screen_Shot_2018-01-31_at_23.42.39.png](https://s5.postimg.org/iz7zymkiv/Screen_Shot_2018-01-31_at_23.42.39.png)](https://postimg.org/image/oamwjc6lf/)
-
-[![Screen_Shot_2018-02-16_at_08.33.11_2.png](https://s5.postimg.org/84rinbz13/Screen_Shot_2018-02-16_at_08.33.11_2.png)](https://postimg.org/image/hcjr41637/)
 
 # Installation
 
