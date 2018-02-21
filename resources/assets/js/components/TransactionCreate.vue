@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="box">
-    <expence-create :types="expenseType" ></expence-create>
-    <income-create :types="incomeType" ></income-create>
+    <expence-create :types="expenseType" :created_at="created_at"></expence-create>
+    <income-create :types="incomeType" :created_at="created_at" ></income-create>
   </div>
 </template>
 
@@ -11,15 +11,16 @@ import ExpenseCreate from './Expense/Create.vue';
 import IncomeCreate from './Income/Create.vue';
 
 export default {
+  props : {
+      created_at : {
+        default : null,
+        type : String
+      }
+  },
 
   data(){
     return {
-      types : [],
-      form : new Form ({
-        amount : null,
-        description : null,
-        type_id : null
-      })
+      types : []
     }
   },
 

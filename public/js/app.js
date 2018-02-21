@@ -32827,7 +32827,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32855,14 +32855,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    created_at: {
+      default: null,
+      type: String
+    }
+  },
+
   data: function data() {
     return {
-      types: [],
-      form: new Form({
-        amount: null,
-        description: null,
-        type_id: null
-      })
+      types: []
     };
   },
 
@@ -32994,7 +32996,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33061,14 +33063,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    types: Array
+    types: Array,
+    created_at: {
+      default: null,
+      type: String
+    }
   },
   data: function data() {
     return {
       form: new Form({
         amount: '',
         description: '',
-        type_id: null
+        type_id: null,
+        created_at: this.created_at
       })
 
     };
@@ -33635,9 +33642,13 @@ var render = function() {
     "div",
     { staticClass: "box" },
     [
-      _c("expence-create", { attrs: { types: _vm.expenseType } }),
+      _c("expence-create", {
+        attrs: { types: _vm.expenseType, created_at: _vm.created_at }
+      }),
       _vm._v(" "),
-      _c("income-create", { attrs: { types: _vm.incomeType } })
+      _c("income-create", {
+        attrs: { types: _vm.incomeType, created_at: _vm.created_at }
+      })
     ],
     1
   )
@@ -33738,7 +33749,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33755,6 +33766,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Week_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Week_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Notification_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Notification_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Notification_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Modal_vue__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Modal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TransactionCreate_vue__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TransactionCreate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__TransactionCreate_vue__);
 //
 //
 //
@@ -33787,6 +33802,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -33797,7 +33823,9 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 /* harmony default export */ __webpack_exports__["default"] = ({
 	components: {
 		'week': __WEBPACK_IMPORTED_MODULE_1__Week_vue___default.a,
-		'notification': __WEBPACK_IMPORTED_MODULE_2__Notification_vue___default.a
+		'notification': __WEBPACK_IMPORTED_MODULE_2__Notification_vue___default.a,
+		'modal': __WEBPACK_IMPORTED_MODULE_3__Modal_vue___default.a,
+		'transaction-create': __WEBPACK_IMPORTED_MODULE_4__TransactionCreate_vue___default.a
 	},
 
 	data: function data() {
@@ -33805,7 +33833,8 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 			expenses: [],
 			days: [],
 			firstDay: __WEBPACK_IMPORTED_MODULE_0_moment___default()(firstDay).day(),
-			lastDay: __WEBPACK_IMPORTED_MODULE_0_moment___default()(lastDay).day()
+			lastDay: __WEBPACK_IMPORTED_MODULE_0_moment___default()(lastDay).day(),
+			date: null
 		};
 	},
 
@@ -33822,7 +33851,7 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 			var cursor = __WEBPACK_IMPORTED_MODULE_0_moment___default()(firstDay);
 			for (var i = 0; i < lastDay.getDate(); i++) {
 				this.days[i] = {
-					date: cursor.format('YYYY-D-MM h:mm:ss'),
+					date: cursor.format('YYYY-MM-D h:mm:ss'),
 					weekNumber: cursor.week() - __WEBPACK_IMPORTED_MODULE_0_moment___default()(cursor).startOf('month').week() + 1,
 					weekDay: cursor.day(),
 					day: cursor.date()
@@ -33847,11 +33876,24 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 			return this.expenses.filter(function (expense) {
 				return expense.weekOfMonth == weekNumber;
 			});
+		},
+		addExpenseOnDay: function addExpenseOnDay(day) {
+			Event.$emit('showModal', 'addExpenseOnDay');
+			this.date = day;
+			console.log(day);
 		}
 	},
 
 	created: function created() {
+		var _this2 = this;
+
 		this.getMonthExpenses();
+		Event.$on('addExpenseOnDay', function (date) {
+			return _this2.addExpenseOnDay(date);
+		});
+		Event.$on('expense-added', function () {
+			return _this2.getMonthExpenses();
+		});
 	}
 });
 
@@ -34138,7 +34180,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34174,6 +34216,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -34182,12 +34239,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {
 		'expense-tag': __WEBPACK_IMPORTED_MODULE_0__Expense_ExpenseTag_vue___default.a
 	},
+	data: function data() {
+		return {
+			showExpenses: false
+		};
+	},
+
 
 	props: {
 		name: String,
 		number: Number,
 		expenses: Array,
-		day: Object
+		day: {
+			default: function _default() {
+				return {
+					day: 0
+				};
+			},
+			type: Object
+		}
+	},
+	methods: {
+		showAddExpense: function showAddExpense() {
+			Event.$emit('addExpenseOnDay', this.day.date);
+		},
+		toggleShowExpenses: function toggleShowExpenses() {
+			if (this.showExpenses) {
+				this.showExpenses = false;
+			} else {
+				this.showExpenses = true;
+			}
+		}
 	},
 	computed: {
 		totalSpent: function totalSpent() {
@@ -34387,12 +34469,20 @@ var render = function() {
           { staticClass: "tile is-child notification " },
           [
             _c("p", { staticClass: "subtitle" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "tag is-primary is-small",
+                  on: { click: _vm.showAddExpense }
+                },
+                [_vm._v("\n         \t\t \t+\n         \t\t ")]
+              ),
               _vm._v(
-                " \n         \t\t " +
+                "\n         \t\t " +
                   _vm._s(_vm.name) +
                   "   " +
                   _vm._s(_vm.day.day) +
-                  "\n         \t\t "
+                  " \n         \t\t \n         \t\t "
               ),
               _vm.totalSpent > 0
                 ? _c("span", { staticClass: "tag is-danger" }, [
@@ -34402,16 +34492,40 @@ var render = function() {
                         "\n         \t\t "
                     )
                   ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.totalSpent > 0 && _vm.showExpenses
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "tag is-info",
+                      on: { click: _vm.toggleShowExpenses }
+                    },
+                    [_vm._v("\n         \t\t \t^\n         \t\t ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.totalSpent > 0 && !_vm.showExpenses
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "tag is-info ",
+                      on: { click: _vm.toggleShowExpenses }
+                    },
+                    [_vm._v("\n         \t\t \tv\n         \t\t ")]
+                  )
                 : _vm._e()
             ]),
             _vm._v(" "),
             _vm._l(_vm.expenses, function(expense) {
-              return _c(
-                "div",
-                { staticClass: "field is-grouped is-grouped-multiline" },
-                [_c("expense-tag", { attrs: { data: expense } })],
-                1
-              )
+              return _vm.showExpenses
+                ? _c(
+                    "div",
+                    { staticClass: "field is-grouped is-grouped-multiline" },
+                    [_c("expense-tag", { attrs: { data: expense } })],
+                    1
+                  )
+                : _vm._e()
             })
           ],
           2
@@ -34555,6 +34669,25 @@ var render = function() {
     [
       _c("notification"),
       _vm._v(" "),
+      _c("modal", { attrs: { name: "addExpenseOnDay" } }, [
+        _c("div", { attrs: { slot: "title" }, slot: "title" }, [
+          _vm._v(" Register a new Transaction ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { attrs: { slot: "content" }, slot: "content" },
+          [_c("transaction-create", { attrs: { created_at: _vm.date } })],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+          _c("button", { staticClass: "button is-primary" }, [
+            _vm._v("Register")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "tile is-ancestor" },
@@ -34617,6 +34750,207 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(267)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(269)
+/* template */
+var __vue_template__ = __webpack_require__(270)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Modal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6e8d36f4", Component.options)
+  } else {
+    hotAPI.reload("data-v-6e8d36f4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(268);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("18c890c3", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 268 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 269 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		name: name
+	},
+	data: function data() {
+		return {
+			showModal: false
+		};
+	},
+	mounted: function mounted() {
+		Event.$on('hideModal', function (modalname) {
+			if (this.name == modalname) {
+				this.showModal = false;
+			}
+		}.bind(this));
+
+		Event.$on('showModal', function (modalname) {
+			if (this.name == modalname) {
+				this.showModal = true;
+			}
+		}.bind(this));
+	}
+});
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showModal
+    ? _c("div", { staticClass: "modal is-active" }, [
+        _c("div", { staticClass: "modal-background" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-card" }, [
+          _c("header", { staticClass: "modal-card-head" }, [
+            _c("p", { staticClass: "modal-card-title" }, [_vm._t("title")], 2),
+            _vm._v(" "),
+            _c("button", {
+              staticClass: "delete",
+              attrs: { "aria-label": "close" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.showModal = false
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "section",
+            { staticClass: "modal-card-body" },
+            [_vm._t("content")],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "footer",
+            { staticClass: "modal-card-foot" },
+            [_vm._t("footer")],
+            2
+          )
+        ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6e8d36f4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

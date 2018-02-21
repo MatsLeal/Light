@@ -54,14 +54,19 @@
 <script>
 export default {
   props: {
-    types: Array
+    types: Array,
+    created_at : {
+      default : null,
+      type : String
+    }
   },
   data() {
     return {
       form: new Form({
         amount: '',
         description: '',
-        type_id: null
+        type_id: null,
+        created_at : this.created_at
       })
 
     }

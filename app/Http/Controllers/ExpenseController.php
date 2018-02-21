@@ -58,6 +58,11 @@ class ExpenseController extends Controller
 
         $expense->types()->attach($request->type_id);
 
+        if($request->created_at){
+            $expense->created_at=$request->created_at;
+            $expense->save();
+        }
+
         return ['message' => 'The expence was registered successfully !',
                   'expense' => $expense->toArray()];
 
