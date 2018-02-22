@@ -7,7 +7,7 @@
 				      <span class="tag is-dark" style="text-decoration: none">
 				      	${{ data.amount }}
 				      </span>
-				      <!-- <span class="tag is-delete" @click="destroy(data)"></span> -->
+				      <span class="tag is-delete" @click="destroy(data)"></span>
 				    </div>
 			  </div>	
 </template>
@@ -20,8 +20,13 @@
 		},
 		methods : {
 			destroy(expense){
+				if(confirm("Sure to delete this expense ?")){
 				axios.delete('/expenses/'+expense.id)				
-				.then(response => Event.$emit('notify-success',response.data.message))
+				.then(response => {
+					Event.$emit('notify-success',response.data.message);
+					Event.$emit('expense-deleted',expense)
+				})
+				}
 			}
 		}
 	}

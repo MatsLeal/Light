@@ -14,6 +14,8 @@
 	         		 	{{ totalSpent }}
 	         		 </span>
 
+	         	  </p>
+
 	         		 <span class="tag is-info" v-if="totalSpent>0 && showExpenses"  @click="toggleShowExpenses">
 	         		 	^
 	         		 </span>
@@ -21,10 +23,6 @@
 	         		 <span class="tag is-info " v-if="totalSpent>0 && !showExpenses"  @click="toggleShowExpenses">
 	         		 	v
 	         		 </span>
-
-
-	         	  </p>
-
 
 		          <div v-for="expense in expenses" class="field is-grouped is-grouped-multiline" v-if="showExpenses">
 				<expense-tag :data="expense"></expense-tag>

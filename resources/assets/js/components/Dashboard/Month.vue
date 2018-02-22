@@ -1,10 +1,15 @@
 <template>
 	
 <div>
-	<notification></notification>
+	<!-- <notification></notification> -->
 	<modal name="addExpenseOnDay">
-		<div slot="title"> Register a new Transaction </div>
+		<div slot="title"> 
+			Register a new Transaction 
+			
+		</div>
+	
 		<div slot="content">
+			<notification></notification>
 			<transaction-create :created_at="date"></transaction-create>
 		</div>
 		<div slot="footer">
@@ -116,6 +121,9 @@ export default {
 		this.getMonthExpenses();
 		Event.$on('addExpenseOnDay',(date) => this.addExpenseOnDay(date));
 		Event.$on('expense-added',() => this.getMonthExpenses());
+		Event.$on('expense-deleted',(expense)=>{
+			this.expenses.splice(this.expenses.indexOf(expense),1);
+		})
 	}
 }
 	

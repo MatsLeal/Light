@@ -33749,7 +33749,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33770,6 +33770,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Modal_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TransactionCreate_vue__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TransactionCreate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__TransactionCreate_vue__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33893,6 +33898,9 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 		});
 		Event.$on('expense-added', function () {
 			return _this2.getMonthExpenses();
+		});
+		Event.$on('expense-deleted', function (expense) {
+			_this2.expenses.splice(_this2.expenses.indexOf(expense), 1);
 		});
 	}
 });
@@ -34180,7 +34188,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34193,8 +34201,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Expense_ExpenseTag_vue__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Expense_ExpenseTag_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Expense_ExpenseTag_vue__);
-//
-//
 //
 //
 //
@@ -34369,7 +34375,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34402,9 +34408,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		destroy: function destroy(expense) {
-			axios.delete('/expenses/' + expense.id).then(function (response) {
-				return Event.$emit('notify-success', response.data.message);
-			});
+			if (confirm("Sure to delete this expense ?")) {
+				axios.delete('/expenses/' + expense.id).then(function (response) {
+					Event.$emit('notify-success', response.data.message);
+					Event.$emit('expense-deleted', expense);
+				});
+			}
 		}
 	}
 });
@@ -34436,7 +34445,16 @@ var render = function() {
             staticStyle: { "text-decoration": "none" }
           },
           [_vm._v("\n\t      \t$" + _vm._s(_vm.data.amount) + "\n\t      ")]
-        )
+        ),
+        _vm._v(" "),
+        _c("span", {
+          staticClass: "tag is-delete",
+          on: {
+            click: function($event) {
+              _vm.destroy(_vm.data)
+            }
+          }
+        })
       ])
     ]
   )
@@ -34492,30 +34510,30 @@ var render = function() {
                         "\n         \t\t "
                     )
                   ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.totalSpent > 0 && _vm.showExpenses
-                ? _c(
-                    "span",
-                    {
-                      staticClass: "tag is-info",
-                      on: { click: _vm.toggleShowExpenses }
-                    },
-                    [_vm._v("\n         \t\t \t^\n         \t\t ")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.totalSpent > 0 && !_vm.showExpenses
-                ? _c(
-                    "span",
-                    {
-                      staticClass: "tag is-info ",
-                      on: { click: _vm.toggleShowExpenses }
-                    },
-                    [_vm._v("\n         \t\t \tv\n         \t\t ")]
-                  )
                 : _vm._e()
             ]),
+            _vm._v(" "),
+            _vm.totalSpent > 0 && _vm.showExpenses
+              ? _c(
+                  "span",
+                  {
+                    staticClass: "tag is-info",
+                    on: { click: _vm.toggleShowExpenses }
+                  },
+                  [_vm._v("\n         \t\t \t^\n         \t\t ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.totalSpent > 0 && !_vm.showExpenses
+              ? _c(
+                  "span",
+                  {
+                    staticClass: "tag is-info ",
+                    on: { click: _vm.toggleShowExpenses }
+                  },
+                  [_vm._v("\n         \t\t \tv\n         \t\t ")]
+                )
+              : _vm._e(),
             _vm._v(" "),
             _vm._l(_vm.expenses, function(expense) {
               return _vm.showExpenses
@@ -34667,17 +34685,19 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("notification"),
-      _vm._v(" "),
       _c("modal", { attrs: { name: "addExpenseOnDay" } }, [
         _c("div", { attrs: { slot: "title" }, slot: "title" }, [
-          _vm._v(" Register a new Transaction ")
+          _vm._v(" \n\t\t\tRegister a new Transaction \n\t\t\t\n\t\t")
         ]),
         _vm._v(" "),
         _c(
           "div",
           { attrs: { slot: "content" }, slot: "content" },
-          [_c("transaction-create", { attrs: { created_at: _vm.date } })],
+          [
+            _c("notification"),
+            _vm._v(" "),
+            _c("transaction-create", { attrs: { created_at: _vm.date } })
+          ],
           1
         ),
         _vm._v(" "),
